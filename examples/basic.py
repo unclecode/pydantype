@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 from typing import List, Optional
-from pydantic_to_typeddict import convert_pydantic_to_typeddict
+from pydantype import convert_pydantype
 
 class Address(BaseModel):
     street: str
@@ -14,7 +14,7 @@ class Person(BaseModel):
     hobbies: List[str]
     nickname: Optional[str]
 
-PersonDict = convert_pydantic_to_typeddict(Person)
+PersonDict = convert_pydantype(Person)
 
 print("PersonDict structure:")
 for field, type_hint in PersonDict.__annotations__.items():

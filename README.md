@@ -1,4 +1,4 @@
-# 🚀 Pydantic to TypedDict Converter
+# 🚀 PydanType: Pydantic to TypedDict Converter
 
 Convert your Pydantic models to TypedDict with ease! 🎉
 
@@ -18,20 +18,20 @@ That's when this utility was born! Now you can:
 Install the package:
 
 ```bash
-pip install pydantic-to-typeddict
+pip install pip install git+https://github.com/unclecode/pydantype.git
 ```
 
 Use it in your code:
 
 ```python
 from pydantic import BaseModel
-from pydantic_to_typeddict import convert_pydantic_to_typeddict
+from pydantype import convert_pydantype
 
 class MyModel(BaseModel):
     name: str
     age: int
 
-MyTypedDict = convert_pydantic_to_typeddict(MyModel)
+MyTypedDict = convert_pydantype(MyModel)
 ```
 
 ## 🌈 Gemini 1.5 Pro Example
@@ -42,7 +42,7 @@ Here's how you can use this utility with Google's Gemini 1.5 Pro:
 import google.generativeai as genai
 from pydantic import BaseModel
 from typing import List
-from pydantic_to_typeddict import convert_pydantic_to_typeddict
+from pydantype import convert_pydantype
 
 class Recipe(BaseModel):
     recipe_name: str
@@ -51,7 +51,7 @@ class Recipe(BaseModel):
 class RecipeList(BaseModel):
     recipes: List[Recipe]
 
-RecipeListDict = convert_pydantic_to_typeddict(RecipeList)
+RecipeListDict = convert_pydantype(RecipeList)
 
 model = genai.GenerativeModel('gemini-1.5-pro',
                               generation_config={
@@ -71,7 +71,7 @@ Here's a more general example showcasing various Pydantic features:
 ```python
 from typing import List, Optional
 from pydantic import BaseModel, Field
-from pydantic_to_typeddict import convert_pydantic_to_typeddict
+from pydantype import convert_pydantype
 
 class Address(BaseModel):
     street: str
@@ -85,7 +85,7 @@ class Person(BaseModel):
     hobbies: List[str] = []
     nickname: Optional[str] = None
 
-PersonDict = convert_pydantic_to_typeddict(Person)
+PersonDict = convert_pydantype(Person)
 
 # PersonDict is now a TypedDict with the same structure as Person
 ```

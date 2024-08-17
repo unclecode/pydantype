@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 
 # Read the version from __init__.py
 def get_version():
-    init_py = open('src/pydantic_to_typeddict/__init__.py').read()
+    init_py = open('src/pydantype/__init__.py').read()
     return re.search(r"__version__ = ['\"]([^'\"]+)['\"]", init_py).group(1)
 
 # Read the contents of README.md
@@ -15,14 +15,14 @@ with open('requirements.txt') as f:
     requirements = f.read().splitlines()
 
 setup(
-    name="pydantic_to_typeddict",
+    name="pydantype",
     version=get_version(),
     author="Unclecode",
     author_email="unclecode@kidocode.com",
     description="A library to convert Pydantic models to TypedDict",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/unclecode/pydantic_to_typeddict",
+    url="https://github.com/unclecode/pydantype",
     packages=find_packages(where="src"),
     package_dir={"": "src"},
     install_requires=requirements,

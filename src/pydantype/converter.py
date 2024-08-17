@@ -16,7 +16,7 @@ def convert_type(annotation: Any, processed_models: set = None) -> Any:
         if annotation.__name__ in processed_models:
             return f"ForwardRef('{annotation.__name__}Dict')"
         processed_models.add(annotation.__name__)
-        return convert_pydantic_to_typeddict(annotation, processed_models)
+        return convert_pydantype(annotation, processed_models)
     
     origin = get_origin(annotation)
     if origin is None:
@@ -45,7 +45,7 @@ def convert_type(annotation: Any, processed_models: set = None) -> Any:
     
     return annotation
 
-def convert_pydantic_to_typeddict(model: Type[BaseModel], processed_models: set = None) -> Type[TypedDict]:
+def convert_pydantype(model: Type[BaseModel], processed_models: set = None) -> Type[TypedDict]:
     if not is_pydantic_model(model):
         raise ValueError(f"Expected a Pydantic model, got {type(model)}")
 
