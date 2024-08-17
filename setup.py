@@ -19,7 +19,7 @@ setup(
     version=get_version(),
     author="Unclecode",
     author_email="unclecode@kidocode.com",
-    description="A library to convert Pydantic models to TypedDict",
+    description="A library to convertt Pydantic models to TypedDict",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/unclecode/pydantype",

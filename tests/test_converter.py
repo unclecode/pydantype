@@ -1,7 +1,7 @@
 import unittest
 from typing import List, Dict, Optional, Union, Any, ForwardRef
 from pydantic import BaseModel, Field
-from pydantype import conver
+from pydantype import convert
 
 class Address(BaseModel):
     street: str
@@ -64,40 +64,40 @@ class TestConverter(unittest.TestCase):
         self.assertEqual(typeddict.__annotations__[field_name], expected_type)
 
     def test_simple_model(self):
-        SimpleDict = conver(SimpleModel)
+        SimpleDict = convert(SimpleModel)
         self.assert_typeddict_field(SimpleDict, 'integer_field', int)
         self.assert_typeddict_field(SimpleDict, 'string_field', str)
         self.assert_typeddict_field(SimpleDict, 'float_field', float)
         self.assert_typeddict_field(SimpleDict, 'boolean_field', bool)
 
     def test_nested_model(self):
-        NestedDict = conver(NestedModel)
+        NestedDict = convert(NestedModel)
         self.assert_typeddict_field(NestedDict, 'name', str)
         self.assertTrue(isinstance(NestedDict.__annotations__['address'], type))
 
     def test_list_model(self):
-        ListDict = conver(ListModel)
+        ListDict = convert(ListModel)
         self.assertTrue(ListDict.__annotations__['items'].__origin__ is list)
         self.assertEqual(ListDict.__annotations__['items'].__args__[0], str)
 
     def test_dict_model(self):
-        DictDict = conver(DictModel)
+        DictDict = convert(DictModel)
         self.assertTrue(DictDict.__annotations__['metadata'].__origin__ is dict)
         self.assertEqual(DictDict.__annotations__['metadata'].__args__[0], str)
         self.assertEqual(DictDict.__annotations__['metadata'].__args__[1], Any)
 
     def test_optional_model(self):
-        OptionalDict = conver(OptionalModel)
+        OptionalDict = convert(OptionalModel)
         self.assertTrue(OptionalDict.__annotations__['maybe_string'].__origin__ is Union)
         self.assertEqual(OptionalDict.__annotations__['maybe_string'].__args__, (str, type(None)))
 
     def test_union_model(self):
-        UnionDict = conver(UnionModel)
+        UnionDict = convert(UnionModel)
         self.assertTrue(UnionDict.__annotations__['union_field'].__origin__ is Union)
         self.assertEqual(set(UnionDict.__annotations__['union_field'].__args__), {int, str, float})
 
     def test_complex_model(self):
-        ComplexDict = conver(ComplexModel)
+        ComplexDict = convert(ComplexModel)
         self.assert_typeddict_field(ComplexDict, 'name', str)
         self.assert_typeddict_field(ComplexDict, 'age', int)
         self.assertTrue(isinstance(ComplexDict.__annotations__['address'], type))
@@ -114,13 +114,13 @@ class TestConverter(unittest.TestCase):
         self.assertEqual(set(ComplexDict.__annotations__['status'].__args__), {str, int})
 
     def test_generic_model(self):
-        GenericDict = conver(GenericModel)
+        GenericDict = convert(GenericModel)
         self.assertTrue(GenericDict.__annotations__['generic_field'].__origin__ is list)
         self.assertTrue(GenericDict.__annotations__['generic_field'].__args__[0].__origin__ is Union)
         self.assertEqual(set(GenericDict.__annotations__['generic_field'].__args__[0].__args__), {int, str})
 
     def test_recursive_model(self):
-        RecursiveDict = conver(RecursiveModel)
+        RecursiveDict = convert(RecursiveModel)
         self.assert_typeddict_field(RecursiveDict, 'value', int)
         self.assertTrue(RecursiveDict.__annotations__['next'].__origin__ is Union)
         
@@ -131,7 +131,7 @@ class TestConverter(unittest.TestCase):
         self.assertEqual(RecursiveDict.__annotations__['next'].__args__[1], type(None))
 
     def test_model_with_field(self):
-        FieldDict = conver(ModelWithField)
+        FieldDict = convert(ModelWithField)
         self.assert_typeddict_field(FieldDict, 'constrained_string', str)
         self.assert_typeddict_field(FieldDict, 'constrained_integer', int)
 

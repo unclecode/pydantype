@@ -1,4 +1,4 @@
-from .converter import conver
+from .convertter import convert
 
-__all__ = ['conver']
+__all__ = ['convert']
 __version__ = '0.1.0'

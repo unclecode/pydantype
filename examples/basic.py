@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 from typing import List, Optional
-from pydantype import conver
+from pydantype import convert
 
 class Address(BaseModel):
     street: str
@@ -14,7 +14,7 @@ class Person(BaseModel):
     hobbies: List[str]
     nickname: Optional[str]
 
-PersonDict = conver(Person)
+PersonDict = convert(Person)
 
 print("PersonDict structure:")
 for field, type_hint in PersonDict.__annotations__.items():
@@ -32,5 +32,5 @@ person = Person(
 # Convert to dict and verify it matches PersonDict
 person_dict = person.model_dump()
 assert isinstance(person_dict, dict)
-print("\nPerson instance converted to dict successfully and matches PersonDict structure.")
+print("\nPerson instance convertted to dict successfully and matches PersonDict structure.")
 print(person_dict)

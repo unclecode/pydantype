@@ -25,13 +25,13 @@ Use it in your code:
 
 ```python
 from pydantic import BaseModel
-from pydantype import conver
+from pydantype import convert
 
 class MyModel(BaseModel):
     name: str
     age: int
 
-MyTypedDict = conver(MyModel)
+MyTypedDict = convert(MyModel)
 ```
 
 ## 🌈 Gemini 1.5 Pro Example
@@ -42,7 +42,7 @@ Here's how you can use this utility with Google's Gemini 1.5 Pro:
 import google.generativeai as genai
 from pydantic import BaseModel
 from typing import List
-from pydantype import conver
+from pydantype import convert
 
 class Recipe(BaseModel):
     recipe_name: str
@@ -51,7 +51,7 @@ class Recipe(BaseModel):
 class RecipeList(BaseModel):
     recipes: List[Recipe]
 
-RecipeListDict = conver(RecipeList)
+RecipeListDict = convert(RecipeList)
 
 model = genai.GenerativeModel('gemini-1.5-pro',
                               generation_config={
@@ -71,7 +71,7 @@ Here's a more general example showcasing various Pydantic features:
 ```python
 from typing import List, Optional
 from pydantic import BaseModel, Field
-from pydantype import conver
+from pydantype import convert
 
 class Address(BaseModel):
     street: str
@@ -85,7 +85,7 @@ class Person(BaseModel):
     hobbies: List[str] = []
     nickname: Optional[str] = None
 
-PersonDict = conver(Person)
+PersonDict = convert(Person)
 
 # PersonDict is now a TypedDict with the same structure as Person
 ```

@@ -1,6 +1,6 @@
 from typing import List, Dict, Optional, Union, Any
 from pydantic import BaseModel, Field
-from pydantype import conver
+from pydantype import convert
 
 print("Welcome to the pydantype Converter Tutorial!")
 print("This example will demonstrate various complex cases and how they're handled.")
@@ -12,7 +12,7 @@ class SimpleModel(BaseModel):
     float_field: float
     boolean_field: bool
 
-SimpleDict = conver(SimpleModel)
+SimpleDict = convert(SimpleModel)
 print(f"SimpleDict annotations: {SimpleDict.__annotations__}")
 
 print("\n2. Nested Model")
@@ -25,35 +25,35 @@ class NestedModel(BaseModel):
     name: str
     address: Address
 
-NestedDict = conver(NestedModel)
+NestedDict = convert(NestedModel)
 print(f"NestedDict annotations: {NestedDict.__annotations__}")
 
 print("\n3. List Model")
 class ListModel(BaseModel):
     items: List[str]
 
-ListDict = conver(ListModel)
+ListDict = convert(ListModel)
 print(f"ListDict annotations: {ListDict.__annotations__}")
 
 print("\n4. Dict Model")
 class DictModel(BaseModel):
     metadata: Dict[str, Any]
 
-DictDict = conver(DictModel)
+DictDict = convert(DictModel)
 print(f"DictDict annotations: {DictDict.__annotations__}")
 
 print("\n5. Optional Model")
 class OptionalModel(BaseModel):
     maybe_string: Optional[str]
 
-OptionalDict = conver(OptionalModel)
+OptionalDict = convert(OptionalModel)
 print(f"OptionalDict annotations: {OptionalDict.__annotations__}")
 
 print("\n6. Union Model")
 class UnionModel(BaseModel):
     union_field: Union[int, str, float]
 
-UnionDict = conver(UnionModel)
+UnionDict = convert(UnionModel)
 print(f"UnionDict annotations: {UnionDict.__annotations__}")
 
 print("\n7. Complex Model")
@@ -71,14 +71,14 @@ class ComplexModel(BaseModel):
     nickname: Optional[str]
     status: Union[str, int]
 
-ComplexDict = conver(ComplexModel)
+ComplexDict = convert(ComplexModel)
 print(f"ComplexDict annotations: {ComplexDict.__annotations__}")
 
 print("\n8. Generic Model")
 class GenericModel(BaseModel):
     generic_field: List[Union[int, str]]
 
-GenericDict = conver(GenericModel)
+GenericDict = convert(GenericModel)
 print(f"GenericDict annotations: {GenericDict.__annotations__}")
 
 print("\n9. Recursive Model")
@@ -87,7 +87,7 @@ class RecursiveModel(BaseModel):
     next: Optional['RecursiveModel'] = None
 
 RecursiveModel.model_rebuild()
-RecursiveDict = conver(RecursiveModel)
+RecursiveDict = convert(RecursiveModel)
 print(f"RecursiveDict annotations: {RecursiveDict.__annotations__}")
 
 print("\n10. Model with Field constraints")
@@ -95,7 +95,7 @@ class ModelWithField(BaseModel):
     constrained_string: str = Field(min_length=3, max_length=50)
     constrained_integer: int = Field(ge=0, le=100)
 
-FieldDict = conver(ModelWithField)
+FieldDict = convert(ModelWithField)
 print(f"FieldDict annotations: {FieldDict.__annotations__}")
 
 print("\nTutorial complete! You've seen how pydantype handles various complex cases.")

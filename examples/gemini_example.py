@@ -5,7 +5,7 @@ import typing_extensions as typing
 import google.generativeai as genai
 from pydantic import BaseModel
 from typing import List
-from pydantype import conver
+from pydantype import convert
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -31,8 +31,8 @@ response_typeddict = model_typeddict.generate_content(prompt)
 print("Response using TypedDict:")
 print(response_typeddict.text)
 
-# Part 2: Using Pydantic and converting to TypedDict
-print("\nPart 2: Using Pydantic and converting to TypedDict")
+# Part 2: Using Pydantic and convertting to TypedDict
+print("\nPart 2: Using Pydantic and convertting to TypedDict")
 
 class RecipePydantic(BaseModel):
     recipe_name: str
@@ -42,10 +42,10 @@ class RecipeList(BaseModel):
     recipes: List[RecipePydantic]
 
 # Convert Pydantic models to TypedDict
-RecipeDict = conver(RecipePydantic)
-RecipeListDict = conver(RecipeList)
+RecipeDict = convert(RecipePydantic)
+RecipeListDict = convert(RecipeList)
 
-# Set up the model with converted Pydantic schema
+# Set up the model with convertted Pydantic schema
 model_pydantic = genai.GenerativeModel('gemini-1.5-pro',
                                        generation_config={
                                            "response_mime_type": "application/json",
@@ -53,11 +53,11 @@ model_pydantic = genai.GenerativeModel('gemini-1.5-pro',
                                        })
 
 response_pydantic = model_pydantic.generate_content(prompt)
-print("Response using converted Pydantic model:")
+print("Response using convertted Pydantic model:")
 print(response_pydantic.text)
 
 print("\nComparison:")
 print("As you can see, both approaches produce the same structure of response.")
 print("The advantage of using Pydantic is that you can define more complex models")
-print("with validation, default values, and other features, and then convert them")
+print("with validation, default values, and other features, and then convertt them")
 print("to TypedDict for use with APIs that require it, like Gemini 1.5 Pro.")
