@@ -1,12 +1,12 @@
 # 🚀 PydanType: Pydantic to TypedDict Converter
+[![GitHub stars](https://img.shields.io/github/stars/unclecode/PyDanType.svg?style=social&label=Star&maxAge=2592000)](https://GitHub.com/unclecode/PyDanType/stargazers/)
+[![GitHub forks](https://img.shields.io/github/forks/unclecode/PyDanType.svg?style=social&label=Fork&maxAge=2592000)]
 
 Convert your Pydantic models to TypedDict with ease! 🎉
 
 ## 🌟 Motivation
 
-Ever felt stuck between the awesome validation of Pydantic and the need for TypedDict? You're not alone! 🤝
-
-When I saw Google's Gemini 1.5 Pro API requiring TypedDict for response schemas, I thought, "Why not have the best of both worlds?" 🤔💡
+Recently, Google Gemini introduced the ability to generate structured output, but here's the catch: unlike many environments that accept Pydantic models, they require TypeDict. It was tricky for me since I had a lot of Pydantic models in other projects, and I figured I wasn’t the only one. So, I created a simple utility that converts any Pydantic model to TypeDict, making it compatible with Gemini. Hopefully, this helps you as well! 💡
 
 That's when this utility was born! Now you can:
 1. Define your models in Pydantic (with all its validation goodness) 👍
@@ -14,6 +14,9 @@ That's when this utility was born! Now you can:
 3. Enjoy the benefits of both! 🎊
 
 ## 🚀 Quick Start
+
+Try it out instantly in our Colab notebook:
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1GAzvhDxhMbeBP48bXFWyrS5SoLjLxufc#scrollTo=welcome_markdown)
 
 Install the package:
 
@@ -107,4 +110,4 @@ This project is licensed under the MIT License. See the LICENSE file for details
 
 ---
 
-Happy coding! 🎈🎊 Remember, with great power comes great responsibility... to write awesome, type-safe code! 💪💻
+Happy coding! 🎈🎊 
