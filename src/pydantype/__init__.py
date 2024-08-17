@@ -1,4 +1,4 @@
-from .converter import convert_pydantype
+from .converter import conver
 
-__all__ = ['convert_pydantype']
+__all__ = ['conver']
 __version__ = '0.1.0'

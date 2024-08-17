@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 from typing import List, Optional
-from pydantype import convert_pydantype
+from pydantype import conver
 
 class Address(BaseModel):
     street: str
@@ -14,7 +14,7 @@ class Person(BaseModel):
     hobbies: List[str]
     nickname: Optional[str]
 
-PersonDict = convert_pydantype(Person)
+PersonDict = conver(Person)
 
 print("PersonDict structure:")
 for field, type_hint in PersonDict.__annotations__.items():

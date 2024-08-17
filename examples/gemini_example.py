@@ -5,7 +5,7 @@ import typing_extensions as typing
 import google.generativeai as genai
 from pydantic import BaseModel
 from typing import List
-from pydantype import convert_pydantype
+from pydantype import conver
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -42,8 +42,8 @@ class RecipeList(BaseModel):
     recipes: List[RecipePydantic]
 
 # Convert Pydantic models to TypedDict
-RecipeDict = convert_pydantype(RecipePydantic)
-RecipeListDict = convert_pydantype(RecipeList)
+RecipeDict = conver(RecipePydantic)
+RecipeListDict = conver(RecipeList)
 
 # Set up the model with converted Pydantic schema
 model_pydantic = genai.GenerativeModel('gemini-1.5-pro',
