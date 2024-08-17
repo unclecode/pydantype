@@ -1,6 +1,8 @@
 # 🚀 PydanType: Pydantic to TypedDict Converter
 [![GitHub stars](https://img.shields.io/github/stars/unclecode/PyDanType.svg?style=social&label=Star&maxAge=2592000)](https://GitHub.com/unclecode/PyDanType/stargazers/)
-[![GitHub forks](https://img.shields.io/github/forks/unclecode/PyDanType.svg?style=social&label=Fork&maxAge=2592000)]
+![GitHub forks](https://img.shields.io/github/forks/unclecode/PyDanType.svg?style=social&label=Fork&maxAge=2592000)
+![GitHub watchers](https://img.shields.io/github/watchers/unclecode/PyDanType.svg?style=social&label=Watch&maxAge=2592000)
+![License](https://img.shields.io/github/license/unclecode/PyDanType)
 
 Convert your Pydantic models to TypedDict with ease! 🎉
 
